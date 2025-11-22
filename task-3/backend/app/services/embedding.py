@@ -22,9 +22,12 @@ class EmbeddingService:
         if self._model is None:
             with self._lock:
                 if self._model is None:
+                    # NOTE: We intentionally avoid 'trust_remote_code' here because the
+                    # installed sentence-transformers version does not accept that
+                    # keyword argument. The configured model_name (e.g. Qwen/Qwen3-Embedding-0.6B)
+                    # is still respected.
                     self._model = SentenceTransformer(
                         self._model_name,
-                        trust_remote_code=True,
                         device=self._device,
                     )
         return self._model
