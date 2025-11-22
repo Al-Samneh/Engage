@@ -26,11 +26,14 @@ jobs:
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
 
-    - name: Build, tag, and push image to Amazon ECR
+    - name: Build, tag, and push image to Amazon ECR (no cache, explicit tag)
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        IMAGE_TAG: latest
+        IMAGE_TAG: v2
       run: |
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+        # Force a clean build so requirements.txt is fully respected (sklearn==1.5.2)
+        docker build --no-cache -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+        # Sanity‑check sklearn version inside the image
+        docker run --rm $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG python -c "import sklearn; print(sklearn.__version__)"
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
