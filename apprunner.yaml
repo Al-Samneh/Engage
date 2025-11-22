@@ -1,0 +1,13 @@
+version: 1.0
+runtime: python3
+build:
+  commands:
+    # Install system dependencies (if needed, though App Runner python env is limited)
+    # We will try to install requirements directly.
+    - pip install -r task-3/backend/requirements.txt
+run:
+  # Export PYTHONPATH so it can find task-1 and task-2 modules
+  command: sh -c "export PYTHONPATH=$PYTHONPATH:$(pwd) && cd task-3/backend && uvicorn app.main:app --host 0.0.0.0 --port 8080"
+network:
+  port: 8080
+
