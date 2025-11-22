@@ -39,8 +39,9 @@ class Settings(BaseModel):
     sagemaker_timeout_seconds: int = Field(10, ge=1, le=60)
     redis_url: str = os.environ.get("CHAT_CACHE_URL", "memory://")
     google_api_key: Optional[str] = os.environ.get("GOOGLE_API_KEY")
+    # Default to a compact, widely available SBERT model. Can be overridden in env.
     rating_embedding_model: str = os.environ.get(
-        "RATING_EMBED_MODEL", "Qwen/Qwen3-Embedding-0.6B"
+        "RATING_EMBED_MODEL", "all-MiniLM-L6-v2"
     )
     rating_embedding_device: str = os.environ.get("RATING_EMBED_DEVICE", "cpu")
 
