@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 1 &mdash; RAG Assistant</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="task-page">
+    <header>
+      <div>
+        <h1>Task 1 &middot; Restaurant RAG Assistant</h1>
+        <p>Select a persona, then chat with the LangGraph workflow. Filters and supporting context appear alongside.</p>
+      </div>
+      <div class="header-links">
+        <a href="/ui/" rel="noreferrer">← Back</a>
+        <a href="/docs" target="_blank" rel="noreferrer">API Docs</a>
+      </div>
+    </header>
+
+    <main class="task1-layout no-persona">
+      <section class="chat-panel">
+        <div id="chatLog" class="chat-log">
+          <div class="chat-message ai">
+            <div class="label">AI</div>
+            <div class="bubble">Hi! Ask me about restaurants in the UAE.</div>
+          </div>
+        </div>
+        <form id="chatForm" class="chat-input">
+          <textarea id="chatInput" placeholder="Ask for Italian spots in Downtown Dubai..." rows="2" required></textarea>
+          <button type="submit">Send</button>
+        </form>
+        <div id="chatStatus" class="status"></div>
+      </section>
+
+      <aside class="filters-panel card">
+        <h3>Applied Filters</h3>
+        <pre id="filterBox">{ }</pre>
+      </aside>
+    </main>
+
+    <footer>
+      Built on Task 1 LangGraph agents &middot; Chat history persists per persona via the shared chat store.
+    </footer>
+
+    <script type="module" src="task1.js"></script>
+  </body>
+</html>
+

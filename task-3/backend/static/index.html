@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Engage Restaurant Intelligence</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <div>
+        <h1>Engage Restaurant Intelligence</h1>
+        <p>Select a workflow below to launch the interactive demos for Task&nbsp;1 or Task&nbsp;2.</p>
+      </div>
+      <div class="header-links">
+        <a href="/docs" target="_blank" rel="noreferrer">API Docs</a>
+        <a href="/v1/healthz" target="_blank" rel="noreferrer">Health Check</a>
+      </div>
+    </header>
+
+    <main class="landing-grid">
+      <article class="card landing-card">
+        <h2>Task 1 – RAG Restaurant Search</h2>
+        <p>
+          Chat-driven UI that wires directly into the LangGraph workflow. Pick a persona,
+          ask follow-up questions, and inspect applied filters plus supporting documents.
+        </p>
+        <a class="cta-link" href="task1.html">Open Task 1 Experience →</a>
+      </article>
+
+      <article class="card landing-card">
+        <h2>Task 2 – Rating Prediction</h2>
+        <p>
+          Configure a restaurant/user scenario and run the XGBoost rating predictor.
+          View rounded-star scores, confidence bounds, and trace metadata.
+        </p>
+        <a class="cta-link" href="task2.html">Open Task 2 Experience →</a>
+      </article>
+    </main>
+
+    <footer>
+      Built for Engage assessment &middot; Uses Task&nbsp;1 LangGraph RAG and Task&nbsp;2 XGBoost model.
+    </footer>
+  </body>
+</html>
+

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 2 &mdash; Rating Prediction</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="task-page">
+    <header>
+      <div>
+        <h1>Task 2 &middot; Rating Prediction</h1>
+        <p>Configure a scenario and query the XGBoost model. Rounded stars and confidence intervals are shown.</p>
+      </div>
+      <div class="header-links">
+        <a href="/ui/" rel="noreferrer">← Back</a>
+        <a href="/docs" target="_blank" rel="noreferrer">API Docs</a>
+      </div>
+    </header>
+
+    <main class="task2-layout">
+      <section class="persona-panel">
+        <h2>Persona</h2>
+        <div id="personaCards" class="user-grid"></div>
+        <p id="personaNote" class="muted">Select a persona to pre-fill user features.</p>
+      </section>
+
+      <section class="prediction-panel card">
+        <h2>Prediction Form</h2>
+        <form id="ratingForm">
+          <label for="restaurantSelect">Restaurant</label>
+          <select id="restaurantSelect"></select>
+
+          <label for="reviewText">Review Snippet</label>
+          <textarea
+            id="reviewText"
+            rows="4"
+            placeholder="Describe the meal in the selected user's voice..."
+            required
+          ></textarea>
+
+          <div class="form-grid">
+            <label>
+              Helpful Votes
+              <input type="number" id="helpfulCount" min="0" value="4" />
+            </label>
+            <label>
+              Season
+              <select id="seasonSelect">
+                <option>Winter</option>
+                <option>Spring</option>
+                <option selected>Summer</option>
+                <option>Autumn</option>
+              </select>
+            </label>
+            <label>
+              Day Type
+              <select id="dayTypeSelect">
+                <option>Weekday</option>
+                <option selected>Weekend</option>
+              </select>
+            </label>
+            <label>
+              Weather
+              <select id="weatherSelect">
+                <option selected>Clear</option>
+                <option>Windy</option>
+                <option>Rainy</option>
+              </select>
+            </label>
+          </div>
+
+          <button type="submit">Predict Rating</button>
+        </form>
+        <div id="ratingStatus" class="status"></div>
+        <div id="ratingResult" class="result">
+          <p class="muted">No prediction yet.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      Powered by Task 2 XGBoost pipeline &middot; Embeddings generated on demand if not provided.
+    </footer>
+
+    <script type="module" src="task2.js"></script>
+  </body>
+</html>
+
