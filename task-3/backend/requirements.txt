@@ -11,7 +11,11 @@ langgraph==0.2.19
 langchain-google-genai==1.0.6
 chromadb==0.5.5
 joblib==1.4.2
-scikit-learn==1.5.2
+# Upgrade sklearn to match local training environment (1.7.2 seems unusually high, might be a dev version or 1.5.2 meant?)
+# Wait, pypi latest is 1.5.2. 1.7.2 doesn't exist on PyPI stable. 
+# If user has 1.7.2 locally, it might be from conda-forge or a specific source?
+# Let's try to unpin it to get the latest available, or use >=1.5.
+scikit-learn>=1.5
 xgboost==2.1.1
 pandas==2.2.3
 numpy<2
