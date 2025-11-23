@@ -67,10 +67,22 @@ class RatingModelService:
                 (entry for entry in preprocessor.transformers if entry[0] == "embed"), None
             )
             self._embedding_cols: List[str] = embed_entry[2] if embed_entry else []
-            residuals = getattr(self._model.named_steps["regressor"], "best_score", None)
-            self._residual_std = None
-            if hasattr(self._model.named_steps["regressor"], "evals_result"):
-                pass  # placeholder for richer metrics
+
+            # Find the model step (could be 'regressor' or 'classifier' depending on training)
+            model_step_name = None
+            for step_name in self._model.named_steps:
+                if step_name in ['regressor', 'classifier']:
+                    model_step_name = step_name
+                    break
+
+            if model_step_name:
+                model_step = self._model.named_steps[model_step_name]
+                residuals = getattr(model_step, "best_score", None)
+                if hasattr(model_step, "evals_result"):
+                    pass  # placeholder for richer metrics
+            else:
+                residuals = None
+
             self._residual_std = 0.3  # fallback
         else:
             if not settings.sagemaker_endpoint_name:
