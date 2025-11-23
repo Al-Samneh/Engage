@@ -1,5 +1,4 @@
 import logging
-
 from fastapi import APIRouter, Depends, HTTPException
 
 from ..dependencies import get_rating_service
