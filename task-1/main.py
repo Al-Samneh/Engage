@@ -1,8 +1,14 @@
 import os
 import sys
 
+# Ensure local imports (agents, state, etc.) work both when run directly and via the API.
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+SRC_DIR = os.path.join(BASE_DIR, "src")
+if SRC_DIR not in sys.path:
+    sys.path.insert(0, SRC_DIR)
+
 # Disable telemetry for ChromaDB and other tools
-os.environ["ANONYMIZED_TELEMETRY"] = "False" 
+os.environ["ANONYMIZED_TELEMETRY"] = "False"
 os.environ["SCARF_NO_ANALYTICS"] = "true"
 
 import logging
